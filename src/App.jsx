@@ -16,7 +16,7 @@ function reducer(todos, action) { //define the
   switch (action.type) {
     case ACTIONS.ADD_TODO:
       return [...todos, newTask(action.payload.taskEntry)];
-    case ACTIONS.TOGGLE_TODO:
+    case ACTIONS.EDIT_TODO:
       return todos.map(todo => {
         if (todo.id === action.payload.id) {
           return { ...todo, complete: !todo.complete } // new todo that is complete
