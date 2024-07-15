@@ -5,7 +5,9 @@ import Todo from './components/Todo';
 
 const ACTIONS = {
   ADD_TODO: 'add-todo', //add a new task 
-  TOGGLE_TODO: 'toggle-todo' //completing/ mark off a task
+  TOGGLE_TODO: 'toggle-todo', //completing/ mark off a task
+  EDIT_TODO: 'edit-todo', //edit a task
+  DELETE_TODO: 'delete-todo' //delete a task
 };
 
 // reducer function so that it updates and returns state
@@ -13,8 +15,12 @@ function reducer(todos, action) { //define the
   // change it so that the ACTIONS.ADD_TODO have something to do. start with switch statements  
   switch (action.type) {
     case ACTIONS.ADD_TODO:
-      return[...todos, newTodo(action.payload.taskEntry)];
-    case ACTIONS.TOGGLE_TODO:
+      return todos.map(todo => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, complete: !todo.complete } // new todo that is complete
+        }
+        return todo;
+      })
   }
 }
 
@@ -48,7 +54,7 @@ const App = () => {
         <button> Add </button>
       </form>
       {todos.map(todo => {
-        return <Todo key = {todo.id} todo={todo} />
+        return <Todo key = {todo.id} todo={todo} dispatch={dispatch}/>
       })}
     </>
       
