@@ -32,7 +32,15 @@ function reducer(todos, action) { //define the
 
 // this function will take in the taskEntry variable 
 function newTask(taskEntry){
-  return { id: Data.now(), taskEntry: taskEntry, complete: false }; //return the new todo
+  // i want to try to use try/catch so that the input cannot be empty before adding a task
+  try {
+    if (!taskEntry) {
+      throw new Error('Task entry cannot be empty');
+    }
+    return { id: Date.now(), taskEntry: taskEntry, complete: false }; //return the new todo
+  } catch (err) {
+    console.log('Error: unable to add new task: ', err.message);
+  }
 }
 
 const App = () => {
