@@ -9,3 +9,6 @@ Currently, two official plugins are available:
 
 
 Assignment Link: https://ps-react-curriculum.herokuapp.com/320/9/lab/ 
+
+Credited Videos:
+https://www.youtube.com/watch?v=kK_Wqx3RnHk - Learn use Reducer in 20 mins
